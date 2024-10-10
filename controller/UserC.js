@@ -70,7 +70,7 @@ export const createUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   const user = await User.findOne({ where: { id: req.params.id } });
   let hashed;
-  const { name, email, password, confirmPass } = req.body;
+  const { name, password, confirmPass } = req.body;
   if (!user) {
     return res.status(404).json({ msg: "User tidak ditemukan" });
   }
@@ -88,7 +88,7 @@ export const updateUser = async (req, res) => {
 
   try {
     const updateUser = await user.update(
-      { name, email, password: hashed },
+      { name, password: hashed },
       { where: { id: user.id } }
     );
     const { password, createdAt, updatedAt, ...userWithoutPassword } =
