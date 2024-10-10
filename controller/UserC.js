@@ -1,6 +1,5 @@
-import { where } from "sequelize";
-import User from "../models/UserModel.js";
 import argon2 from "argon2";
+import User from "../models/UserModel.js";
 
 export const getUser = async (req, res) => {
   try {

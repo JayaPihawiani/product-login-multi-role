@@ -18,6 +18,7 @@ const store = new sessionStore({
   db: db,
 });
 
+// sql table sync (run it for synchronize the tables)
 // (async () => {
 //   try {
 //     await db.sync({ force: true });
@@ -45,9 +46,12 @@ app.use(
 );
 
 app.use(express.json());
-app.get("/", (req, res) => res.send("Welcome to user api"));
-app.use("/user", userRouter);
-app.use("/product", productRouter);
-app.use(authRouter);
+app.get("/", (req, res) => res.send("Welcome to product API"));
+app.use("/api/user", userRouter);
+app.use("/api/product", productRouter);
+app.use("/api/auth", authRouter);
+
+// sql table sync (run it for synchronize the tables)
 // store.sync();
+
 app.listen(port, () => console.log(`Server running at port ${port}`));

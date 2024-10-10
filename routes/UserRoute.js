@@ -11,10 +11,7 @@ import {
 
 const userRouter = express.Router();
 
-userRouter
-  .route("/")
-  .get(verifyUser, adminAuth, getUser)
-  .post(verifyUser, adminAuth, createUser);
+userRouter.route("/").get(verifyUser, adminAuth, getUser).post(createUser);
 userRouter
   .route("/:id")
   .get(verifyUser, adminAuth, getUserById)
