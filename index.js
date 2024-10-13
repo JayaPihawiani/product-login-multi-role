@@ -33,7 +33,7 @@ app.use(
     secret: process.env.SESS_SECRET,
     resave: false,
     store: store,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: "auto" },
   })
 );

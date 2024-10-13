@@ -79,6 +79,8 @@ export const updateProduct = async (req, res) => {
     if (!response)
       return res.status(404).json({ msg: "Data tidak ditemukan." });
     const { name, price } = req.body;
+    if (!name || !price)
+      return res.status(400).json({ msg: "Field ada yang kosong." });
     if (req.role === "admin") {
       await Product.update({ name, price }, { where: { id: response.id } });
     } else {

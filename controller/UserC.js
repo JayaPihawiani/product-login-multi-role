@@ -45,6 +45,9 @@ export const createUser = async (req, res) => {
         .json({ msg: "Password terlalu pendek. Minimal harus 8 karakter" });
     }
 
+    if (name.length < 5)
+      return res.status(400).json({ msg: "Nama minimal 5 karakter" });
+
     const hashed = await argon2.hash(password);
 
     try {
