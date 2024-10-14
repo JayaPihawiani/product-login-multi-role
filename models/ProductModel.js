@@ -29,12 +29,13 @@ const Product = db.define(
       },
     },
   },
+
   {
     freezeTableName: true,
   }
 );
 
-User.hasMany(Product, { foreignKey: "userID" });
+User.hasMany(Product, { foreignKey: "userID", onDelete: "CASCADE" });
 Product.belongsTo(User, { foreignKey: "userID" });
 
 export default Product;
